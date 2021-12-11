@@ -185,7 +185,7 @@ const findLineSymCount = (
 }
 
 const removeCharsAndSplit = (text: string, charsToRemove: number) => {
-  return removeSymbolsFromLine(text, charsToRemove).split('/n')
+  return removeSymbolsFromLine(text, charsToRemove).split('\n')
 }
 
 const debugOutput = (str: string) => output.appendLine(str)
