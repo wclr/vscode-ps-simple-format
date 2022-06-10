@@ -427,11 +427,11 @@ type Config = {
   onlySelection?: boolean
 }
 
-const defaultFormatter = 'purty'
+const defaultFormatter = 'tidy'
 
 const defaultConfig: Config = {
   formatter: defaultFormatter,
-  onlySelection: true,
+  onlySelection: false,
 }
 
 const runFormatter = async (
