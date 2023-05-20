@@ -1,0 +1,71 @@
+{
+	"name": "vscode-ps-tunned-format",
+	"displayName": "vscode-ps-tunned-format",
+	"publisher": "wclr",
+	"author": {
+		"name": "Alex Wclr"
+	},
+	"description": "PureScript tuned formatter",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/wclr/vscode-purty"
+	},
+	"version": "0.6.0",
+	"engines": {
+		"vscode": "^1.30.0"
+	},
+	"categories": [
+		"Formatters"
+	],
+	"activationEvents": [
+		"onLanguage:purescript"
+	],
+	"main": "./extension.js",
+	"icon": "images/icon.png",
+	"contributes": {
+		"languages": [
+			{
+				"id": "purescript",
+				"aliases": [
+					"PureScript",
+					"purs"
+				],
+				"extensions": [
+					".purs"
+				]
+			}
+		],
+		"configuration": {
+			"title": "Purescript top level formatter.",			
+			"properties": {
+				"purescript.topLevelFormat.formatter": {
+					"type": "string",
+					"default": "",
+					"markdownDescription": "Formatter (purty, tidy, pose)"
+				},
+				"purty.pathToPurty": {
+					"type": "string",
+					"default": "",
+					"markdownDescription": "Specifies the location of the purty executable (if unspecified I will try \"cwd/node_modules/.bin/purty\" and then look in the `PATH` environment variable)."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/node": "^14.14.32",
+		"@types/which": "^2.0.0",
+		"diff": ">=4.0.2",
+		"eslint": "^7.9.0",
+		"vscode": "^1.1.37"
+	},
+	"dependencies": {
+		"pkg-up": "^3.1.0",
+		"purs-top-level-format": "file:.yalc/purs-top-level-format",
+		"typescript": "^4.2.3",
+		"which": "^2.0.2"
+	}
+}

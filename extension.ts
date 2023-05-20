@@ -5,7 +5,7 @@ import pkgUp from 'pkg-up'
 import vscode from 'vscode'
 import which from 'which'
 
-const { formatDefault, adjustIndentDefault } = require('purs-top-level-format')
+const { formatDefault } = require('purs-top-level-format')
 
 type Formatter = {
   name: string
