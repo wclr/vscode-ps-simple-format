@@ -211,16 +211,19 @@ const justFormat = (
   if (!formatter || !selRange) {
     const text = document.getText()
     if (formatter && !config.onlySelection) {
-      return runFormatter(formatter, text, document.fileName).then(
-        (formatted) => {
+      return runFormatter(formatter, text, document.fileName)
+        .then((formatted) => {
           return [
             vscode.TextEdit.replace(
               getDocRange(document),
               formatDefault(formatted)
             ),
           ]
-        }
-      )
+        })
+        .catch((e) => {
+          debugOutput('Error while formatting: ' + e.toString())
+          return []
+        })
     } else {
       debugOutput('Formatting whole document')
       return Promise.resolve([
@@ -481,7 +484,8 @@ const runFormatter = async (
     childProcess.on('error', (err) => {
       output.appendLine('childProcess error: ' + err.message)
     })
-    output.appendLine('writing text\n' + text)
+    //output.appendLine('0writing text\n' + text)
+    output.appendLine('writing text to formatter')
     childProcess.stdin!.write(text)
     childProcess.stdin!.end()
   })

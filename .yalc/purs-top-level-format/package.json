@@ -1,0 +1,23 @@
+{
+  "name": "purs-top-level-format",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "bin.js"
+  ],
+  "bin": {
+    "purs-format": "index.js"
+  },
+  "scripts": {
+    "dev": "pnpm dev-format && pnpm dev-vscode",
+    "dev-format": "echo module.exports = require('./output/TopLevel') > index.js",
+    "dev-vscode": "echo module.exports = require(\"../output/Extension\") > output.js",
+    "bundle": "spago bundle-module -m TopLevel --to index.js",
+    "test": "spago run -m Test.Main"
+  },
+  "author": "wclr",
+  "license": "ISC",
+  "yalcSig": "24350df0beb352aee670e2494221573c"
+}
